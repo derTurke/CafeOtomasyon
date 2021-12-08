@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\web\AuthController;
+use App\Http\Controllers\web\BasketController;
 use App\Http\Controllers\web\CategoryController;
+use App\Http\Controllers\web\CommentController;
 use App\Http\Controllers\web\ImageController;
 use App\Http\Controllers\web\ProductController;
+use App\Http\Controllers\web\SettingController;
 use App\Http\Controllers\web\SSSController;
 use App\Http\Controllers\web\TableController;
 use Illuminate\Support\Facades\Route;
@@ -47,13 +50,21 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::post('store/{product_id}', [ImageController::class, 'store'])->name('store_image');
         Route::get('destroy/{id}/{product_id}', [ImageController::class, 'destroy'])->name('destroy_image');
     });
+    Route::prefix('/comment')->group(function(){
+        Route::get('/{product_id}', [CommentController::class, 'index'])->name('comment');
+        Route::get('destroy/{id}/{product_id}', [CommentController::class, 'destroy'])->name('destroy_comment');
+    });
     //Table
     Route::prefix('/table')->group(function () {
         Route::get('/', [TableController::class, 'index'])->name('table');
         Route::get('create', [TableController::class, 'create'])->name('create_table');
         Route::get('destroy/{id}', [TableController::class, 'destroy'])->name('destroy_table');
     });
-
+    //Basket
+    Route::prefix('/basket')->group(function(){
+        Route::get('/', [BasketController::class, 'index'])->name('basket');
+        Route::get('destroy/{id}', [BasketController::class, 'destroy'])->name('destroy_basket');
+    });
     //SSS
     Route::prefix('/sss')->group(function () {
         Route::get('/', [SSSController::class, 'index'])->name('sss');
@@ -62,6 +73,10 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('edit/{id}', [SSSController::class, 'edit'])->name('edit_sss');
         Route::post('update/{id}', [SSSController::class, 'update'])->name('update_sss');
         Route::get('destroy/{id}', [SSSController::class, 'destroy'])->name('destroy_sss');
+    });
+    Route::prefix('/setting')->group(function(){
+        Route::get('/', [SettingController::class, 'index'])->name('setting');
+        Route::post('update', [SettingController::class, 'update'])->name('update_setting');
     });
     Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 });

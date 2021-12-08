@@ -47,7 +47,7 @@
                                 <tr>
                                     <td>{{$rs->id}}</td>
                                     <td>{{$rs->question}}</td>
-                                    <td>{{$rs->answer}}</td>
+                                    <td>{!! $rs->answer !!}</td>
                                     <td>@if($rs->status == 1) Evet @else Hayır @endif</td>
                                     <td><a href="{{route('edit_sss',['id' => $rs->id])}}"><i class="bx bx-pencil" style="color:#0a53be;font-size: 1.25rem"></i></a>
                                     <a href="{{route('destroy_sss',['id' => $rs->id])}}" onclick="return confirm('{{$rs->id}} numaralı sık sorulan soruyu silmek istediğinize emin misiniz?')"><i class="bx bx-trash" style="color: red;font-size: 1.25rem;"></i></a></td>

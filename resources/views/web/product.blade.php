@@ -41,8 +41,9 @@
                             <th>Ad</th>
                             <th>Fiyat</th>
                             <th>Malzemeler</th>
-                            <th>Resim Galerisi</th>
                             <th>Durum</th>
+                            <th>Resim Galerisi</th>
+                            <th>Yorumlar</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -59,6 +60,7 @@
                                 <td>{{$rs->contents}}</td>
                                 <td>@if($rs->status == 1) Evet @else Hayır @endif</td>
                                 <td><a href="{{route('create_image',['product_id' => $rs->id])}}" onclick="return !window.open(this.href,'','top=50 left=100 width=1100,height=700')"><i class='bx bx-images text-success font-24'></i></a></td>
+                                <td><a href="{{route('comment',['product_id' => $rs->id])}}" onclick="return !window.open(this.href,'','top=50 left=100 width=1100,height=700')"><i class='bx bx-comment text-warning font-24'></i></a></td>
                                 <td><a href="{{route('edit_product',['id' => $rs->id])}}"><i class="bx bx-pencil" style="color:#0a53be;font-size: 1.25rem"></i></a>
                                     <a href="{{route('destroy_product',['id' => $rs->id])}}" onclick="return confirm('{{$rs->id}} numaralı ürünü silmek istediğinize emin misiniz?')"><i class="bx bx-trash" style="color: red;font-size: 1.25rem;"></i></a></td>
                             </tr>

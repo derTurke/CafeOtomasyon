@@ -37,10 +37,24 @@
             </a>
         </li>
         <li>
+            <a href="{{route('basket')}}">
+                <div class="parent-icon"><i class='bx bx-basket'></i>
+                </div>
+                <div class="menu-title">Sepetler</div>
+            </a>
+        </li>
+        <li>
             <a href="{{route('sss')}}">
                 <div class="parent-icon"><i class='bx bx-question-mark'></i>
                 </div>
                 <div class="menu-title">S.S.S.</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('setting')}}">
+                <div class="parent-icon"><i class='bx bx-wrench'></i>
+                </div>
+                <div class="menu-title">Ayarlar</div>
             </a>
         </li>
 

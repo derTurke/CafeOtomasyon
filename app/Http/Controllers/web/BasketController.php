@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Faq;
+use App\Models\Basket;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class SSSController extends Controller
+class BasketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +18,8 @@ class SSSController extends Controller
      */
     public function index()
     {
-        $dataList = Faq::all();
-        return view('web.sss',['dataList' => $dataList]);
+        $dataList = Basket::all();
+        return view('web.baskets',['dataList' => $dataList]);
     }
 
     /**
@@ -27,7 +29,7 @@ class SSSController extends Controller
      */
     public function create()
     {
-        return view('web.sss_create');
+        //
     }
 
     /**
@@ -38,12 +40,7 @@ class SSSController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Faq;
-        $data->question = $request->input('question');
-        $data->answer = $request->input('answer');
-        $data->status = $request->input('status');
-        $data->save();
-        return redirect()->route('sss');
+        //
     }
 
     /**
@@ -65,8 +62,7 @@ class SSSController extends Controller
      */
     public function edit($id)
     {
-        $data = Faq::find($id);
-        return view('web.sss_edit',['data' => $data]);
+        //
     }
 
     /**
@@ -78,12 +74,7 @@ class SSSController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Faq::find($id);
-        $data->question = $request->input('question');
-        $data->answer = $request->input('answer');
-        $data->status = $request->input('status');
-        $data->save();
-        return redirect()->route('sss');
+        //
     }
 
     /**
@@ -94,7 +85,7 @@ class SSSController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('faqs')->where('id','=',$id)->delete();
-        return redirect()->route('sss');
+        DB::table('baskets')->where('id','=',$id)->delete();
+        return redirect()->route('basket');
     }
 }

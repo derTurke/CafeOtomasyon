@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
-@section('title','Nesil Cafe S.S.S. Ekleme Sayfası')
+@section('title','Nesil Cafe S.S.S. Güncelleme Sayfası')
 
 
 @section('content')
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">S.S.S. Ekle</div>
+        <div class="breadcrumb-title pe-3">S.S.S. Güncelle</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
@@ -13,7 +13,7 @@
                     </li>
                     <li class="breadcrumb-item"><a href="{{route('sss')}}">S.S.S.</a>
                     </li>
-                    <li class="breadcrumb-item active">S.S.S. Ekle</li>
+                    <li class="breadcrumb-item active">S.S.S. Güncelle</li>
                 </ol>
             </nav>
         </div>
@@ -22,20 +22,21 @@
         <div class="card">
             <div class="card-body">
                 <div class="p-4 border rounded">
-                    <form class="row g-3 needs-validation was-validated" novalidate="" action="{{route('store_sss')}}" method="post" enctype="multipart/form-data">
+                    <form class="row g-3 needs-validation was-validated" novalidate="" action="{{route('update_sss',['id' => $data->id])}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-12">
                             <label for="name" class="form-label">Soru</label>
-                            <input type="text" class="form-control" id="question" name="question" required="">
+                            <input type="text" class="form-control" id="question" name="question" required="" value="{{$data->question}}">
                             <div class="valid-feedback">Başarılı!</div>
                         </div>
                         <div class="col-md-12">
                             <label for="detail" class="form-label">Cevap</label>
-                            <textarea name="answer" id="answer"></textarea>
+                            <textarea name="answer" id="answer">{{$data->answer}}</textarea>
                         </div>
                         <div class="col-md-12">
                             <label for="status" class="form-label">Uygulamada Görünsün mü?</label>
                             <select class="form-select is-invalid" name="status" id="status" aria-describedby="validationServer04Feedback" required="">
+                                <option value="{{$data->status}}">@if($data->status == 1) Evet @else Hayır @endif</option>
                                 <option value="">Durum Seçiniz!</option>
                                 <option value="0">Hayır</option>
                                 <option value="1">Evet</option>
