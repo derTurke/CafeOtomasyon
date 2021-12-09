@@ -5,6 +5,8 @@ use App\Http\Controllers\web\BasketController;
 use App\Http\Controllers\web\CategoryController;
 use App\Http\Controllers\web\CommentController;
 use App\Http\Controllers\web\ImageController;
+use App\Http\Controllers\web\OrderController;
+use App\Http\Controllers\web\OrderDetailController;
 use App\Http\Controllers\web\ProductController;
 use App\Http\Controllers\web\SettingController;
 use App\Http\Controllers\web\SSSController;
@@ -64,6 +66,18 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::prefix('/basket')->group(function(){
         Route::get('/', [BasketController::class, 'index'])->name('basket');
         Route::get('destroy/{id}', [BasketController::class, 'destroy'])->name('destroy_basket');
+    });
+    //Order
+    Route::prefix('/order')->group(function(){
+        Route::get('/', [OrderController::class, 'index'])->name('order');
+        Route::get('edit/{id}', [OrderController::class, 'edit'])->name('edit_order');
+        Route::post('update/{id}', [OrderController::class, 'update'])->name('update_order');
+        Route::get('destroy/{id}', [OrderController::class, 'destroy'])->name('destroy_order');
+    });
+    //Order Detail
+    Route::prefix('/order_detail')->group(function(){
+        Route::get('/{order_id}', [OrderDetailController::class, 'index'])->name('order_detail');
+        Route::get('destroy/{id}/{order_id}', [OrderDetailController::class, 'destroy'])->name('destroy_order_detail');
     });
     //SSS
     Route::prefix('/sss')->group(function () {

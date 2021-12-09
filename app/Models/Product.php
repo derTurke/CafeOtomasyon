@@ -14,6 +14,9 @@ class Product extends Model
     public function baskets(){
         return $this->hasMany(Basket::class);
     }
+    public function orderDetails(){
+        return $this->hasMany(OrderDetail::class);
+    }
     public function category(){
         return $this->belongsTo(Category::class);
     }

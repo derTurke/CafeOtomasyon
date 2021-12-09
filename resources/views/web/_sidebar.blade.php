@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <h4 class="logo-text">Nesil Cafe</h4>
+            <h4 class="logo-text">eRestaurant</h4>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
         </div>
@@ -41,6 +41,13 @@
                 <div class="parent-icon"><i class='bx bx-basket'></i>
                 </div>
                 <div class="menu-title">Sepetler</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('order')}}">
+                <div class="parent-icon"><i class='bx bx-money'></i>
+                </div>
+                <div class="menu-title">Siparişler</div>
             </a>
         </li>
         <li>

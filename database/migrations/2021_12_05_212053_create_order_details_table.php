@@ -22,7 +22,7 @@ class CreateOrderDetailsTable extends Migration
             $table->float("price");
             $table->float("amount");
             $table->float("total");
-            $table->string("note",100);
+            $table->string("note",100)->nullable();
             $table->string("ip",50);
             $table->integer("status")->default(1);
             $table->timestamps();
