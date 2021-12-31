@@ -57,7 +57,7 @@
                                         <strong>Fiyat: </strong>{{number_format($rs->price, 2, ',', '.')}} &#8378;<br>
                                         @endif
                                     </td>
-                                    <td>Masa {{$rs->table_id}}</td>
+                                    <td>Masa {{$rs->table->name}}</td>
                                     <td>
                                         <strong>Adet: </strong>{{$rs->amount}}<br>
                                         <strong>Toplam Tutar: </strong>{{number_format(($rs->price * $rs->amount), 2, ',', '.')}} &#8378;

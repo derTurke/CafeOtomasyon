@@ -31,7 +31,6 @@ class CreateSettingsTable extends Migration
             $table->string("linkedin",50)->nullable();
             $table->text("kullanici_sozlesme")->nullable();
             $table->text("kvkk")->nullable();
-            $table->text("aydinlatma_metni")->nullable();
 
             $table->timestamps();
         });
