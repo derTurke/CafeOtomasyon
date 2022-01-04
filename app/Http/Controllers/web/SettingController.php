@@ -93,9 +93,7 @@ class SettingController extends Controller
         $data->twitter = $request->input('twitter');
         $data->instagram = $request->input('instagram');
         $data->linkedin = $request->input('linkedin');
-        $data->kullanici_sozlesme = $request->input('kullanici_sozlesme');
         $data->kvkk = $request->input('kvkk');
-        $data->aydinlatma_metni = $request->input('aydinlatma_metni');
         $data->save();
 
         return redirect()->route('setting');

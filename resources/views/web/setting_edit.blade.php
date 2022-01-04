@@ -54,29 +54,11 @@
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" data-bs-toggle="tab" href="#about-us" role="tab" aria-selected="false">
-                            <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class="bx bxs-message-rounded font-18 me-1"></i>
-                                </div>
-                                <div class="tab-title">Kullanıcı Sözleşmesi</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
                         <a class="nav-link" data-bs-toggle="tab" href="#contact-info" role="tab" aria-selected="false">
                             <div class="d-flex align-items-center">
                                 <div class="tab-icon"><i class="bx bxs-contact font-18 me-1"></i>
                                 </div>
                                 <div class="tab-title">KVKK</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" data-bs-toggle="tab" href="#references-info" role="tab" aria-selected="false">
-                            <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class="bx bxs-notepad font-18 me-1"></i>
-                                </div>
-                                <div class="tab-title">Aydınlatma Metni</div>
                             </div>
                         </a>
                     </li>
@@ -159,22 +141,10 @@
                             <div class="valid-feedback">Başarılı!</div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="about-us" role="tabpanel">
-                        <div class="col-md-12">
-                            <label for="kullanici_sozlesme" class="form-label">Kullanıcı Sözleşmesi</label>
-                            <textarea id="kullanici_sozlesme" name="kullanici_sozlesme">{{$data->kullanici_sozlesme}}</textarea>
-                        </div>
-                    </div>
                     <div class="tab-pane fade" id="contact-info" role="tabpanel">
                         <div class="col-md-12">
                             <label for="kvkk" class="form-label">KVKK</label>
                             <textarea id="kvkk" name="kvkk">{{$data->kvkk}}</textarea>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="references-info" role="tabpanel">
-                        <div class="col-md-12">
-                            <label for="aydinlatma_metni" class="form-label">Aydınlatma Metni</label>
-                            <textarea id="aydinlatma_metni" name="aydinlatma_metni">{{$data->aydinlatma_metni}}</textarea>
                         </div>
                     </div>
                     <button class="btn btn-primary mt-3" type="submit">Güncelle</button>
@@ -190,6 +160,5 @@
     <script>
         CKEDITOR.replace('kullanici_sozlesme');
         CKEDITOR.replace('kvkk');
-        CKEDITOR.replace('aydinlatma_metni');
     </script>
 @endsection

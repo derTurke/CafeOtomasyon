@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController as AuthController;
+use App\Http\Controllers\PersonelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,8 +18,33 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
+
 Route::middleware('auth:sanctum')->group(function(){
-    Route::get('user',[AuthController::class,'user']);
+
+    //Address
+    Route::post('addAddress',[PersonelController::class,'addAddress']);
+    Route::post('getAddress',[PersonelController::class,'getAddress']);
+    Route::post('getSingleAddress',[PersonelController::class,'getSingleAddress']);
+    Route::post('deleteAddress',[PersonelController::class,'deleteAddress']);
+    Route::post('editAddress',[PersonelController::class,'editAddress']);
+
+    //Personel Information
+    Route::post('personelInformation',[PersonelController::class,'personelInformation']);
+    Route::post('updatePersonelInformation',[PersonelController::class,'updatePersonelInformation']);
+
+    //Edit Password
+    Route::post('editPassword',[PersonelController::class,'editPassword']);
+
+    //FAQ
+    Route::get('faq',[PersonelController::class,'faq']);
+
+    //Privacy Information
+    Route::get('privacyInformation',[PersonelController::class,'privacyInformation']);
+    //About US
+    Route::get('aboutUs',[PersonelController::class,'aboutUs']);
+
+
+    //Logout
     Route::post('logout',[AuthController::class,'logout']);
 });
 
