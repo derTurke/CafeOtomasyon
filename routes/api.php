@@ -42,6 +42,8 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('privacyInformation',[PersonelController::class,'privacyInformation']);
     //About US
     Route::get('aboutUs',[PersonelController::class,'aboutUs']);
+    //Help Desk Information
+    Route::post('helpDesk',[PersonelController::class,'helpDesk']);
 
 
     //Logout

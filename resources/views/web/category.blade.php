@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title','Nesil Cafe Kategori Sayfası')
+@section('title','eRestaurant Kategori Sayfası')
 
 
 @section('content')
     <div class="row">
         <div class="col-md-8 page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <div class="breadcrumb-title pe-3">
-                Category List
+                Kategori Listesi
             </div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">

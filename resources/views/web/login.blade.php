@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link href="{{asset('assets')}}/admin/css/app.css" rel="stylesheet">
     <link href="{{asset('assets')}}/admin/css/icons.css" rel="stylesheet">
-    <title>Admin Panel Login Page</title>
+    <title>eRestaurant Admin Panel Giriş</title>
 </head>
 
 <body class="bg-login">

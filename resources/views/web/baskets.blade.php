@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','Nesil Cafe Sepetler Sayfası')
+@section('title','eRestaurant Sepetler Sayfası')
 
 
 @section('content')

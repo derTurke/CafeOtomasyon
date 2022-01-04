@@ -200,4 +200,27 @@ class PersonelController extends Controller
         $setting = Setting::select('company_name','brand_name','sicil_no','vergi_no','vergi_dairesi','mersis_no','address','phone','fax','email','facebook','twitter','instagram','linkedin')->first();
         return $setting;
     }
+
+    public function helpDesk(Request $request){
+        $subject = $request->input('subject');
+        $message = $request->input('message');
+        if(empty($subject)){
+            return response()->json('Konu boş olamaz!');
+        }
+        if(empty($message)){
+            return response()->json('Mesajınız boş olamaz!');
+        }
+        $addAddress = DB::table('messages')->insert([
+            'user_id' => Auth::user()->id,
+            'subject' => $subject,
+            'message' => $message,
+            'email' => Auth::user()->email
+        ]);
+        if ($addAddress){
+            return response()->json('success');
+        } else {
+            return response()->json('Mesajınız iletilirken bir sorunla karşılaşıldı. Lütfen tekrar deneyiniz!');
+        }
+    }
+
 }
