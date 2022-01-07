@@ -51,6 +51,13 @@
             </a>
         </li>
         <li>
+            <a href="{{route('messages')}}">
+                <div class="parent-icon"><i class='bx bx-message'></i>
+                </div>
+                <div class="menu-title">Mesajlar</div>
+            </a>
+        </li>
+        <li>
             <a href="{{route('sss')}}">
                 <div class="parent-icon"><i class='bx bx-question-mark'></i>
                 </div>

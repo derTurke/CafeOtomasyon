@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController as AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PersonelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,11 @@ Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
 
 Route::middleware('auth:sanctum')->group(function(){
+
+    //Category
+    Route::get('getCategories',[CategoryController::class,'getCategories']);
+
+
 
     //Address
     Route::post('addAddress',[PersonelController::class,'addAddress']);

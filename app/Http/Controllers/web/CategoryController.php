@@ -97,7 +97,6 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $data = Category::find($id);
-
         $data->parent_id = $request->input('parent_id');
         $data->name = $request->input('name');
         if($request->file('image') != null){

@@ -28,7 +28,6 @@
                             <label for="parent_id" class="form-label">Ana Kategori</label>
                             <select class="form-select is-invalid" name="parent_id" id="parent_id" aria-describedby="parentFeedBack" required="">
                                 <option value="">Lütfen Ana Kategori Seçiniz!</option>
-                                <option value="0">Ana Kategori</option>
                                 @foreach($dataList as $rs)
                                     <option value="{{$rs->id}}">{{\App\Http\Controllers\web\CategoryController::getParentsTree($rs,$rs->name)}}</option>
                                 @endforeach

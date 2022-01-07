@@ -22,7 +22,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="p-4 border rounded">
-                    <form class="row g-3 needs-validation was-validated" novalidate="" action="{{route('update_product',['id' => $data->id])}}" method="post">
+                    <form class="row g-3 needs-validation was-validated" novalidate="" action="{{route('update_product',['id' => $data->id])}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-12">
                             <label for="parent_id" class="form-label">Kategori</label>

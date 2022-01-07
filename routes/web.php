@@ -5,12 +5,14 @@ use App\Http\Controllers\web\BasketController;
 use App\Http\Controllers\web\CategoryController;
 use App\Http\Controllers\web\CommentController;
 use App\Http\Controllers\web\ImageController;
+use App\Http\Controllers\web\MessageController;
 use App\Http\Controllers\web\OrderController;
 use App\Http\Controllers\web\OrderDetailController;
 use App\Http\Controllers\web\ProductController;
 use App\Http\Controllers\web\SettingController;
 use App\Http\Controllers\web\SSSController;
 use App\Http\Controllers\web\TableController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -91,6 +93,11 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::prefix('/setting')->group(function(){
         Route::get('/', [SettingController::class, 'index'])->name('setting');
         Route::post('update', [SettingController::class, 'update'])->name('update_setting');
+    });
+
+    Route::prefix('/messages')->group(function (){
+        Route::get('/', [MessageController::class, 'index'])->name('messages');
+        Route::get('update/{id}', [MessageController::class, 'update'])->name('update_message');
     });
     Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 });

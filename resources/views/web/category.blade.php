@@ -45,6 +45,11 @@
                             </thead>
                             <tbody>
                             @foreach($dataList as $rs)
+                                @if($rs->id == 0)
+                                    @php
+                                        continue;
+                                    @endphp
+                                @else
                                 <tr>
                                     <td>{{$rs->id}}</td>
                                     <td><img src="{{Storage::url($rs->image)}}" alt="{{$rs->name}}" width="50px"></td>
@@ -56,6 +61,7 @@
                                     <td><a href="{{route('edit_category',['id' => $rs->id])}}"><i class="bx bx-pencil" style="color:#0a53be;font-size: 1.25rem"></i></a>
                                     <a href="{{route('destroy_category',['id' => $rs->id])}}" onclick="return confirm('{{$rs->id}} numaralı kategoriyi silmek istediğinize emin misiniz?')"><i class="bx bx-trash" style="color: red;font-size: 1.25rem;"></i></a></td>
                                 </tr>
+                                @endif
                             @endforeach
                             </tbody>
                         </table>

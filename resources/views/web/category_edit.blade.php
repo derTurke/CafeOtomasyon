@@ -22,13 +22,11 @@
         <div class="card">
             <div class="card-body">
                 <div class="p-4 border rounded">
-                    <form class="row g-3 needs-validation was-validated" novalidate="" action="{{route('update_category',['id' => $data->id])}}" method="post">
+                    <form class="row g-3 needs-validation was-validated" novalidate="" action="{{route('update_category',['id' => $data->id])}}"  method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-12">
                             <label for="parent_id" class="form-label">Ana Kategori</label>
                             <select class="form-select is-invalid" name="parent_id" id="parent_id" aria-describedby="parentFeedBack" required="">
-                                <option value="">Kategori Seçiniz!</option>
-                                <option value="0">Ana Kategori</option>
                                 @foreach($dataList as $rs)
                                     <option value="{{$rs->id}}" @if($rs->id == $data->parent_id) selected="selected" @endif>{{\App\Http\Controllers\web\CategoryController::getParentsTree($rs,$rs->name)}}</option>
                                 @endforeach
