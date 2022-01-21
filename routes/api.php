@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController as AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PersonelController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,8 @@ Route::middleware('auth:sanctum')->group(function(){
 
     //Category
     Route::get('getCategories',[CategoryController::class,'getCategories']);
+    //Product
+    Route::post('getProducts',[ProductController::class,'getProducts']);
 
 
 
