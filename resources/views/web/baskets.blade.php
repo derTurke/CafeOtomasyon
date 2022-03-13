@@ -33,7 +33,6 @@
                                 <th>#</th>
                                 <th>Kullanıcı Bilgileri</th>
                                 <th>Ürün Bilgileri</th>
-                                <th>Masa</th>
                                 <th>Fiyat Bilgileri</th>
                                 <th>Ekleme Tarihi</th>
                                 <th></th>
@@ -57,7 +56,6 @@
                                         <strong>Fiyat: </strong>{{number_format($rs->price, 2, ',', '.')}} &#8378;<br>
                                         @endif
                                     </td>
-                                    <td>Masa {{$rs->table->name}}</td>
                                     <td>
                                         <strong>Adet: </strong>{{$rs->amount}}<br>
                                         <strong>Toplam Tutar: </strong>{{number_format(($rs->price * $rs->amount), 2, ',', '.')}} &#8378;

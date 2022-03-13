@@ -17,7 +17,8 @@ class CreateBasketsTable extends Migration
             $table->id();
             $table->integer("user_id");
             $table->integer("product_id");
-            $table->integer("table_id")->nullable();
+            $table->string("image",250)->nullable();
+            $table->string("name",100)->nullable();
             $table->float("price");
             $table->float("amount");
             $table->float("total");

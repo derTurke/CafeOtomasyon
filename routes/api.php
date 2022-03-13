@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController as AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PersonelController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
@@ -27,8 +28,19 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('getCategories',[CategoryController::class,'getCategories']);
     //Product
     Route::post('getProducts',[ProductController::class,'getProducts']);
+    Route::post('getProduct',[ProductController::class,'getProduct']);
 
+    //Basket
+    Route::post('addBasket',[ProductController::class,'addBasket']);
+    Route::post('getBasket',[ProductController::class,'getBasket']);
+    Route::post('deleteBasket',[ProductController::class,'deleteBasket']);
+    Route::post('getBasketSummary',[ProductController::class,'getBasketSummary']);
+    Route::post('getTables',[ProductController::class,'getTables']);
 
+    //Order
+    Route::post('addOrder',[OrderController::class,'addOrder']);
+    Route::post('getOrders',[OrderController::class,'getOrders']);
+    Route::post('getOrderProductDetail',[OrderController::class,'getOrderProductDetail']);
 
     //Address
     Route::post('addAddress',[PersonelController::class,'addAddress']);
