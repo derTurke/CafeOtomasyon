@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController as AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PersonelController;
 use App\Http\Controllers\ProductController;
@@ -24,6 +25,10 @@ Route::post('login',[AuthController::class,'login']);
 
 Route::middleware('auth:sanctum')->group(function(){
 
+    //Home
+    Route::post('getLastOrder',[HomeController::class,'getLastOrder']);
+
+
     //Category
     Route::get('getCategories',[CategoryController::class,'getCategories']);
     //Product
@@ -41,6 +46,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('addOrder',[OrderController::class,'addOrder']);
     Route::post('getOrders',[OrderController::class,'getOrders']);
     Route::post('getOrderProductDetail',[OrderController::class,'getOrderProductDetail']);
+    Route::post('getOrderDetail',[OrderController::class,'getOrderDetail']);
 
     //Address
     Route::post('addAddress',[PersonelController::class,'addAddress']);

@@ -68,5 +68,20 @@ class OrderController extends Controller
         }
         return $arr;
     }
+    public function getOrderDetail(Request $request){
+        $order_id = $request->input('order_id');
+        $order = DB::table('orders')->select('id','user_id','address_id','table_id','total','note','created_at')->where('user_id',Auth::user()->id)->where('id',$order_id)->first();
+        if(!empty($order->address_id)){
+            $detail = DB::table('addresses')->select('header','address','building_no','floor','apartment_no','specification','phone')->where('id',$order->address_id)->where('user_id',Auth::user()->id)->first();
+            $user = DB::table('users')->select('name')->where('id',$order->user_id)->first();
+            $arr = ["id" => $order->id, "total" => $order->total, "note" => $order->note, "created_at" => $order->created_at, "user_name" => $user->name, "header" => $detail->header, "address" => $detail->address,
+                    "building_no" => $detail->building_no, "floor" => $detail->floor, "apartment_no" => $detail->apartment_no, "specification" => $detail->specification,
+                    "phone" => $detail->phone];
+        } else {
+            $detail = DB::table('tables')->select('id','name')->where('id', $order->table_id)->first();
+            $arr = ["id" => $order->id, "total" => $order->total, "note" => $order->note, "created_at" => $order->created_at, "table_name" => $detail->name];
+        }
+        return response()->json($arr);
+    }
 
 }
