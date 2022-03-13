@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PersonelController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\web\ChefController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -78,6 +79,9 @@ Route::middleware('auth:sanctum')->group(function(){
 });
 
 
+Route::get('chefNewOrder',[ChefController::class,'chefNewOrder']);
+Route::get('chefPrepareOrder',[ChefController::class,'chefPrepareOrder']);
+Route::get('updateNewOrder',[ChefController::class,'updateNewOrder']);
 
 
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
