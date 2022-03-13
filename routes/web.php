@@ -3,6 +3,7 @@
 use App\Http\Controllers\web\AuthController;
 use App\Http\Controllers\web\BasketController;
 use App\Http\Controllers\web\CategoryController;
+use App\Http\Controllers\web\ChefController;
 use App\Http\Controllers\web\CommentController;
 use App\Http\Controllers\web\ImageController;
 use App\Http\Controllers\web\MessageController;
@@ -26,8 +27,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/eRestaurant/chef', [ChefController::class,'index'])->name('chef');
+
+
+
+
+
 Route::get('/admin/login', [AuthController::class,'login'])->name('login');
 Route::post('/admin/logincheck', [AuthController::class, 'logincheck'])->name('logincheck');
+
 Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('/', [AuthController::class,'index'])->name('home');
     //Category
@@ -101,4 +110,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     });
     Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 });
+
+
+
 
