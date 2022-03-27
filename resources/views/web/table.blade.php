@@ -37,8 +37,6 @@
                         <tr>
                             <th>#</th>
                             <th>Ad</th>
-                            <th>QR Code</th>
-                            <th>Durum</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -47,8 +45,6 @@
                             <tr>
                                 <td>{{$rs->id}}</td>
                                 <td>Masa {{$rs->name}}</td>
-                                <td>{!! QrCode::size(100)->generate($rs->qr_code) !!}</td>
-                                <td>@if($rs->status == 1) Dolu @else Boş @endif</td>
                                 <td><a href="{{route('destroy_table',['id' => $rs->id])}}" onclick="return confirm('{{$rs->id}} numaralı masayı silmek istediğinize emin misiniz?')"><i class="bx bx-trash" style="color: red;font-size: 1.25rem;"></i></a></td>
                             </tr>
                         @endforeach

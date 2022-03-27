@@ -43,13 +43,30 @@
                 <div class="menu-title">Sepetler</div>
             </a>
         </li>
-        <li>
+        <li class="">
+            <a href="javascript:;" class="has-arrow" aria-expanded="false">
+                <div class="parent-icon"><i class="bx bx-alarm"></i>
+                </div>
+                <div class="menu-title">Siparişler</div>
+            </a>
+            <ul class="mm-collapse">
+                <li> <a href="{{route('order',['slug' => 'New'])}}"><i class="bx bx-right-arrow-alt"></i><i class="badge text-white bg-danger float-end">Yeni</i></a>
+                </li>
+                <li> <a href="{{route('order',['slug' => 'Accepted'])}}"><i class="bx bx-right-arrow-alt"></i><i class="badge text-white bg-primary float-end">Onaylanan</i></a>
+                </li>
+                <li> <a href="{{route('order',['slug' => 'Prepared'])}}"><i class="bx bx-right-arrow-alt"></i><i class="badge text-white bg-warning float-end">Hazırlanan</i></a>
+                </li>
+                <li> <a href="{{route('order',['slug' => 'Completed'])}}"><i class="bx bx-right-arrow-alt"></i><i class="badge text-white bg-success float-end">Tamamlanan</i></a>
+                </li>
+            </ul>
+        </li>
+        {{--<li>
             <a href="{{route('order')}}">
                 <div class="parent-icon"><i class='bx bx-money'></i>
                 </div>
                 <div class="menu-title">Siparişler</div>
             </a>
-        </li>
+        </li>--}}
         <li>
             <a href="{{route('messages')}}">
                 <div class="parent-icon"><i class='bx bx-message'></i>

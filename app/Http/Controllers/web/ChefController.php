@@ -39,5 +39,9 @@ class ChefController extends Controller
         $update = DB::table('order_details')->where('id',$order_id)->update([
             "status" => $status
         ]);
+        $orders_details = DB::table('order_details')->where('id',$order_id)->first();
+        $updateX = DB::table('orders')->where('id',$orders_details->order_id)->update([
+            "status" => $status
+        ]);
     }
 }

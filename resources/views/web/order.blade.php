@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-8 page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <div class="breadcrumb-title pe-3">
-                Siparişler
+                {{$slug_tr}} Siparişler
             </div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
@@ -31,11 +31,11 @@
                         <tr>
                             <th>#</th>
                             <th>Kullanıcı Bilgileri</th>
-                            <th>Masa</th>
+                            <th>Masa || Adres</th>
                             <th>Toplam Tutar</th>
                             <th>Not</th>
-                            <th>Ip Adres</th>
                             <th>Ekleme Tarihi</th>
+                            <th>Durum</th>
                             <th>Detay</th>
                             <th></th>
                         </tr>
@@ -53,14 +53,28 @@
                                 <td>
                                     @if($rs->table)
                                     {{'Masa '.$rs->table->name}}
+                                    @elseif($rs->address_id)
+                                        <strong>Adres: </strong>{{$rs->address->address}}
+                                        <br>
+                                        <strong>Telefon: </strong>{{$rs->address->phone}}
                                     @endif
                                 </td>
                                 <td>{{number_format($rs->total, 2, ',', '.')}} &#8378;</td>
                                 <td>{{$rs->note}}</td>
-                                <td>{{$rs->ip}}</td>
                                 <td>{{$rs->created_at}}</td>
+                                <td>
+                                    @if($rs->status == 1)
+                                        Onay Bekliyor
+                                    @elseif($rs->status == 2)
+                                        Hazırlanıyor
+                                    @elseif($rs->status == 3)
+                                        <a class="btn btn-sm btn-success" href="{{route('edit_order',['id' => $rs->id,'slug' => $slug])}}">Tamamlandı</a>
+                                    @elseif($rs->status == 4)
+                                        Tamamlandı
+                                        @endif
+                                </td>
                                 <td><a class="btn btn-sm btn-primary" href="{{route('order_detail',['order_id' => $rs->id])}}" onclick="return !window.open(this.href,'','top=50 left=100 width=1100,height=700')">Detay</a></td>
-                                <td><a href="{{route('destroy_order',['id' => $rs->id])}}" onclick="return confirm('{{$rs->id}} numaralı siparişi silmek istediğinize emin misiniz?')"><i class="bx bx-trash" style="color: red;font-size: 1.25rem;"></i></a></td></td>
+                                <td><a href="{{route('destroy_order',['id' => $rs->id,'slug' => $slug])}}" onclick="return confirm('{{$rs->id}} numaralı siparişi silmek istediğinize emin misiniz?')"><i class="bx bx-trash" style="color: red;font-size: 1.25rem;"></i></a></td></td>
                             </tr>
                         @endforeach
                         </tbody>

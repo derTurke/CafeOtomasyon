@@ -14,10 +14,32 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug)
     {
-        $dataList = Order::all();
-        return view('web.order',['dataList' => $dataList]);
+        $status = "";
+        $slug_tr = "";
+        switch ($slug){
+            case 'New':
+                $status = 1;
+                $slug_tr = "Yeni";
+                break;
+            case 'Accepted':
+                $status = 2;
+                $slug_tr = "Onaylanan";
+                break;
+            case 'Prepared':
+                $status = 3;
+                $slug_tr = "Hazırlanan";
+                break;
+            case 'Completed':
+                $status = 4;
+                $slug_tr = "Tamamlanan";
+                break;
+
+        }
+
+        $dataList = Order::where('status','=',$status)->get();
+        return view('web.order',['dataList' => $dataList,'slug' => $slug,'slug_tr' => $slug_tr]);
     }
 
     /**
@@ -58,9 +80,12 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,$slug)
     {
-        //
+        DB::table('orders')->where('id','=',$id)->update([
+            'status' => 4
+        ]);
+        return redirect()->route('order',['slug' => $slug]);
     }
 
     /**
@@ -81,10 +106,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,$slug)
     {
         DB::table('orders')->where('id','=',$id)->delete();
         DB::table('order_details')->where('order_id','=',$id)->delete();
-        return redirect()->route('order');
+        return redirect()->route('order',['slug' => $slug]);
     }
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\web\MessageController;
 use App\Http\Controllers\web\OrderController;
 use App\Http\Controllers\web\OrderDetailController;
 use App\Http\Controllers\web\ProductController;
+use App\Http\Controllers\web\ProfileController;
 use App\Http\Controllers\web\SettingController;
 use App\Http\Controllers\web\SSSController;
 use App\Http\Controllers\web\TableController;
@@ -80,10 +81,10 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     });
     //Order
     Route::prefix('/order')->group(function(){
-        Route::get('/', [OrderController::class, 'index'])->name('order');
-        Route::get('edit/{id}', [OrderController::class, 'edit'])->name('edit_order');
+        Route::get('/{slug}', [OrderController::class, 'index'])->name('order');
+        Route::get('edit/{id}/{slug}', [OrderController::class, 'edit'])->name('edit_order');
         Route::post('update/{id}', [OrderController::class, 'update'])->name('update_order');
-        Route::get('destroy/{id}', [OrderController::class, 'destroy'])->name('destroy_order');
+        Route::get('destroy/{id}/{slug}', [OrderController::class, 'destroy'])->name('destroy_order');
     });
     //Order Detail
     Route::prefix('/order_detail')->group(function(){
@@ -108,6 +109,13 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('/', [MessageController::class, 'index'])->name('messages');
         Route::get('update/{id}', [MessageController::class, 'update'])->name('update_message');
     });
+
+    Route::prefix('/profile')->group(function (){
+        Route::get('/',[ProfileController::class,'index'])->name('profile');
+        Route::post('/profile_update',[ProfileController::class,'profile_update'])->name('profile_update');
+        Route::post('/password_update',[ProfileController::class,'password_update'])->name('password_update');
+    });
+
     Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 });
 

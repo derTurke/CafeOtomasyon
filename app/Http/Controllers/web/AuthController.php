@@ -5,6 +5,7 @@ namespace App\Http\Controllers\web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -15,7 +16,21 @@ class AuthController extends Controller
      */
     public function index()
     {
-        return view('web.index');
+        $new = DB::table('orders')->where('status',1)->count();
+        $accepted = DB::table('orders')->where('status',2)->count();
+        $prepared = DB::table('orders')->where('status',3)->count();
+        $completed = DB::table('orders')->where('status',4)->count();
+        $daily_sum = DB::table('orders')->where('status',4)->whereBetween('created_at',[date('Y-m-d 00:00:00'),date('Y-m-d 23:59:59')])->sum('total');
+        $total_sum = DB::table('orders')->where('status',4)->sum('total');
+        $data = [
+            "new" => $new,
+            "accepted" => $accepted,
+            "prepared" => $prepared,
+            "completed" => $completed,
+            "daily_sum" => $daily_sum,
+            'total_sum' => $total_sum
+        ];
+        return view('web.index',$data);
     }
 
     public function login(){

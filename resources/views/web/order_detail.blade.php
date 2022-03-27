@@ -31,6 +31,7 @@
                         <th>Toplam Tutar</th>
                         <th>Not</th>
                         <th>Ip Adres</th>
+                        <th>Durum</th>
                         <th>Ekleme Tarihi</th>
                         <th></th>
                     </tr>
@@ -46,6 +47,7 @@
                             <td>{{$rs->note}}</td>
                             <td>{{$rs->ip}}</td>
                             <td>{{$rs->created_at}}</td>
+                            <td>@if($rs->status == 1)Onay bekliyor @elseif($rs->status == 2) Hazırlanıyor @elseif($rs->status == 3) Hazırlandı @endif</td>
                             <td>
                                 <a href="{{route('destroy_order_detail',['id' => $rs->id,'order_id' => $rs->order_id])}}" onclick="return confirm('{{$rs->id}} numaralı ürünü silmek istediğinize emin misiniz?')"><i class="bx bx-trash" style="color: red;font-size: 1.25rem;"></i></a></td>
                             </td>
