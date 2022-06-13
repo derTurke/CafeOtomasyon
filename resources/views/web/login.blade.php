@@ -36,6 +36,7 @@
                         <div class="card-body">
                             <div class="border p-4 rounded">
                                 <div class="form-body">
+                                    <h5 class="text-center">Admin Panel Giriş</h5>
                                     <form class="row g-3" action="{{route('logincheck')}}" method="post">
                                         @csrf
                                         <div class="col-12">
@@ -47,14 +48,6 @@
                                             <div class="input-group" id="show_hide_password">
                                                 <input type="password" name="password" class="form-control border-end-0" id="inputChoosePassword" placeholder="Şifre"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                                                <label class="form-check-label" for="flexSwitchCheckChecked">Beni Hatırla</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 text-end">	<a href="authentication-forgot-password.html">Şifre mi Unuttum?</a>
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">

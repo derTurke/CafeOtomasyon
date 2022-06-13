@@ -82,6 +82,13 @@
             </a>
         </li>
         <li>
+            <a href="{{route('users')}}">
+                <div class="parent-icon"><i class='bx bxs-user-account'></i>
+                </div>
+                <div class="menu-title">Kullanıcılar</div>
+            </a>
+        </li>
+        <li>
             <a href="{{route('setting')}}">
                 <div class="parent-icon"><i class='bx bx-wrench'></i>
                 </div>

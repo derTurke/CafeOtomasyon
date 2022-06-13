@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\web\UserController;
 use App\Http\Controllers\web\AuthController;
 use App\Http\Controllers\web\BasketController;
 use App\Http\Controllers\web\CategoryController;
@@ -17,23 +18,9 @@ use App\Http\Controllers\web\TableController;
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 
 Route::get('/eRestaurant/chef', [ChefController::class,'index'])->name('chef');
-
-
-
-
 
 Route::get('/admin/login', [AuthController::class,'login'])->name('login');
 Route::post('/admin/logincheck', [AuthController::class, 'logincheck'])->name('logincheck');
@@ -110,6 +97,16 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('update/{id}', [MessageController::class, 'update'])->name('update_message');
     });
 
+    //Users
+    Route::prefix('/users')->group(function(){
+        Route::get('/', [UserController::class, 'index'])->name('users');
+        Route::get('/create', [UserController::class, 'create'])->name('create_user');
+        Route::post('/store', [UserController::class, 'store'])->name('store_user');
+        Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit_user');
+        Route::post('/update/{id}', [UserController::class, 'update'])->name('update_user');
+        Route::get('/destroy/{id}', [UserController::class, 'destroy'])->name('destroy_user');
+    });
+
     Route::prefix('/profile')->group(function (){
         Route::get('/',[ProfileController::class,'index'])->name('profile');
         Route::post('/profile_update',[ProfileController::class,'profile_update'])->name('profile_update');
@@ -118,7 +115,6 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 
     Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 });
-
 
 
 
